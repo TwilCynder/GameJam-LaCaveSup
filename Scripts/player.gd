@@ -1,7 +1,7 @@
-extends Node2D
-
+extends CharacterBody2D
 @export var SPEED = 400;
 var time = TimeController;
+const JUMP_VELOCITY = -400.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,12 +10,20 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+		
 	var direction = Vector2.ZERO;
 	direction.x = (Input.get_action_strength("Right") - Input.get_action_strength("Left"));
 	direction.y = (Input.get_action_strength("Down") - Input.get_action_strength("Up"));
 
 	time.current_scale = direction.x;
-
-	self.position += direction * SPEED * delta;
+	move_and_slide()
+	# self.position += direction * SPEED * delta;
 	
 	pass
