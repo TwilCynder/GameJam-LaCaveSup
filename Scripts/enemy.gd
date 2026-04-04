@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	delta = time.delta(delta);
 	
 	var velocity = Vector2(-SPEED, 0);
-	
+	print(velocity * delta)
 	position += velocity * delta;
 	
 	pass
