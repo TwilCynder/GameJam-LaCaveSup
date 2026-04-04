@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://br7nv3x72wphc"]
+
+[ext_resource type="Script" uid="uid://c6mppna5ta6jf" path="res://Scripts/bullet_test.gd" id="1_s7vo4"]
+[ext_resource type="Texture2D" uid="uid://xl7hqpc7a6i7" path="res://Images/enemy.png" id="2_norqu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_girm1"]
+size = Vector2(103.5, 72.502754)
+
+[node name="Node2D" type="Node2D" unique_id=5704986]
+script = ExtResource("1_s7vo4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=6401083]
+position = Vector2(1.1175871e-08, 1.0000001)
+scale = Vector2(1, 0.40000007)
+skew = 0.008726597
+shape = SubResource("RectangleShape2D_girm1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1685656598]
+scale = Vector2(1, 0.3)
+skew = 0.008726646
+texture = ExtResource("2_norqu")

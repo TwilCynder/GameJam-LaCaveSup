@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 	direction.x = (Input.get_action_strength("Right") - Input.get_action_strength("Left"));
 	#direction.y = (Input.get_action_strength("Down") - Input.get_action_strength("Up"));
 	
-	velocity = direction * SPEED;
+	velocity.x = direction.x * SPEED;
 	
 	move_and_slide();
 	
