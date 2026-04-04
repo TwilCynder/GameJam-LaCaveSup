@@ -1,7 +1,11 @@
 extends CharacterBody2D
-var bullet_path=preload("res://Scenes/bullet_test.tscn")
 
-@export var fire_rate: float = 0.4  # secondes entre chaque tir
+var bullet_path = preload("res://Scenes/bullet_test2.tscn")
+
+@export var fire_rate: float = 0.4
+@export var desired_distance: float = 150.0
+@export var desired_angle_deg: float = 60.0
+@export var throw_direction: Vector2 = Vector2(-1, 0)  # tire à gauche par défaut
 
 @onready var timer = $Timer
 
@@ -14,7 +18,5 @@ func _ready() -> void:
 
 func _on_fire() -> void:
 	var bullet = bullet_path.instantiate()
-	bullet.dir = 0
-	bullet.rota=global_rotation
 	get_tree().root.add_child(bullet)
-	bullet.global_position = $Node2D.global_position
+	bullet.launch($Node2D.global_position, throw_direction, desired_distance, desired_angle_deg)

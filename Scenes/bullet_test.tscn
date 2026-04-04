@@ -19,3 +19,5 @@ shape = SubResource("RectangleShape2D_jaks3")
 scale = Vector2(1, 0.3)
 skew = 0.008726646
 texture = ExtResource("2_yqkdu")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1332204451]
