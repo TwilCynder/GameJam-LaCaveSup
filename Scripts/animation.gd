@@ -10,4 +10,5 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	speed_scale = TimeController.current_scale;
+	frame_progress
 	pass
