@@ -8,22 +8,27 @@ func _ready() -> void:
 	print(time);
 	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		
 	var direction = Vector2.ZERO;
 	direction.x = (Input.get_action_strength("Right") - Input.get_action_strength("Left"));
-	direction.y = (Input.get_action_strength("Down") - Input.get_action_strength("Up"));
-
-	time.current_scale = direction.x;
-	move_and_slide()
-	# self.position += direction * SPEED * delta;
+	#direction.y = (Input.get_action_strength("Down") - Input.get_action_strength("Up"));
 	
+	velocity = direction * SPEED;
+	
+	move_and_slide();
+	
+	time.current_scale = velocity.normalized().x;
+	
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+
 	pass
