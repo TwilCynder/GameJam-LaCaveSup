@@ -176,9 +176,8 @@ tile_set = SubResource("TileSet_o06y3")
 [node name="sprite" parent="." unique_id=109324791 instance=ExtResource("2_8fptb")]
 position = Vector2(24, -160)
 
-[node name="CharacterBody2D2" parent="." unique_id=1051078121 instance=ExtResource("4_8fptb")]
+[node name="Goomba 1" parent="." unique_id=1051078121 instance=ExtResource("4_8fptb")]
 position = Vector2(-71, -309)
 
-[node name="Octorok" parent="." unique_id=544551016 instance=ExtResource("4_8fptb")]
-position = Vector2(633, -67)
-BULLET_INTERVAL = 50
+[node name="Goomba 2" parent="." unique_id=2091002843 instance=ExtResource("4_8fptb")]
+position = Vector2(797, -183)

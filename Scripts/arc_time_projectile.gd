@@ -9,7 +9,7 @@ var throw_angle_degrees: float
 var throw_direction: Vector2
 var initial_position: Vector2
 
-@onready var projectile_sprite = $Sprite2D
+@onready var projectile_sprite = $Sprite
 
 func init_arc(direction: Vector2, desired_distance: float, desired_angle_deg: float) -> void:
 	initial_position = position;
@@ -18,7 +18,7 @@ func init_arc(direction: Vector2, desired_distance: float, desired_angle_deg: fl
 	initial_speed = pow(desired_distance * GRAVITY / sin(2 * deg_to_rad(desired_angle_deg)), 0.5)
 
 func calc_position(time: float):
-	time = time/40;
+	time = time * 10;
 	
 	var z_axis = initial_speed * sin(deg_to_rad(throw_angle_degrees)) * time \
 		- 0.5 * GRAVITY * pow(time, 2)

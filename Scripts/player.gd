@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide();
 	
 	time.current_scale = velocity.normalized().x;
-	time.player_x = position.x - init_pos_x;
+	time.player_x = (position.x - init_pos_x) / SPEED;
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

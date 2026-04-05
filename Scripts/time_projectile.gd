@@ -17,6 +17,8 @@ class State:
 var destruction_time: float = 0;
 
 @onready var sprite: AnimatedSprite2D = $Sprite;
+var spriteFPS: float;
+var spriteFrames: int;
 var stateHistory: Array[State] = [];
 var maxPlayerX = 0;
 var current_index = 0;
@@ -35,8 +37,8 @@ func _physics_process(delta: float) -> void:
 	delta = TimeController.delta(delta);
 
 	var time = TimeController.player_x;
-	
-	if (time < spawn_time):
+	#print(time, " - ", spawn_time)
+	if (time <= spawn_time):
 		hide();
 		return;
 	else: 
@@ -84,6 +86,9 @@ func _physics_process(delta: float) -> void:
 		current_index = index;
 		position = state.position;
 		
+	print(time, " - ", spriteFPS," - ", spriteFrames, " - ",floor(time / spriteFPS))
+	sprite.frame = (floor(time * spriteFPS) as int) % spriteFrames;
+	
 func on_body_entered():
 	pass
 	
@@ -101,6 +106,11 @@ func _ready() -> void:
 	recordState(0);
 	monitoring = true
 	body_entered.connect(self._on_body_entered)
+	
+	spriteFPS = sprite.sprite_frames.get_animation_speed("default");
+	spriteFrames = sprite.sprite_frames.get_frame_count("default");
+	sprite.stop();
+	
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
