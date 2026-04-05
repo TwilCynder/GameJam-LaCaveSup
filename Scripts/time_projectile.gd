@@ -11,7 +11,6 @@ class State:
 		self.playerPosition = playerPosition_;
 		self.position = position_;
 
-@export var spawn_time: float = 0;
 var destruction_time: float = 0;
 
 var stateHistory: Array[State] = [];
@@ -80,23 +79,16 @@ func _physics_process(delta: float) -> void:
 		current_index = index;
 		position = state.position;
 	
-func on_body_entered():
-	pass
-	
-func _on_body_entered(body):
-	if on_body_entered():
-		return
-	if body is Player:
-		body.macron_explosion()
-	
+	update_animation(time);
+
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	init_projectile()
 	if (spawn_time > 0):
 		hide();
 	recordState(0);
 	monitoring = true
-	body_entered.connect(self._on_body_entered)
 
 	
 	pass # Replace with function body.

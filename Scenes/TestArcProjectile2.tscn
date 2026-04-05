@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://do383520l2jln"]
+
+[ext_resource type="Script" uid="uid://dginopwnmb2dd" path="res://Scenes/TestNonTimeProjectile.gd" id="1_yp6gn"]
+[ext_resource type="Texture2D" uid="uid://2lthvb5tb761" path="res://Images/bullet.png" id="2_t3hhf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ogxo2"]
+radius = 15.34
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa1jy"]
+atlas = ExtResource("2_t3hhf")
+region = Rect2(0, 0, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8566"]
+atlas = ExtResource("2_t3hhf")
+region = Rect2(9, 0, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vces"]
+atlas = ExtResource("2_t3hhf")
+region = Rect2(18, 0, 9, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dj2yp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aa1jy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8566")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vces")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bullet" type="Area2D" unique_id=2041184161]
+scale = Vector2(1.085, 1.085)
+gravity = 9.8
+script = ExtResource("1_yp6gn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=6401083]
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_ogxo2")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1074927505]
+texture_filter = 1
+scale = Vector2(3.18, 3.18)
+sprite_frames = SubResource("SpriteFrames_dj2yp")
+autoplay = "default"

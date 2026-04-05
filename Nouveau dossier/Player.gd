@@ -42,7 +42,7 @@ func _physics_process(delta):
 			jump_state(delta)
 
 	move_and_slide()
-	TimeController.player_x = (position.x - init_pos_x) / 200;
+	TimeController.set_time((position.x - init_pos_x) / 200)
 	TimeController.current_scale = velocity.normalized().x;
 
 func end_game_over():

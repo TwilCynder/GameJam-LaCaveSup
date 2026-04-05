@@ -9,8 +9,6 @@ var throw_angle_degrees: float
 var throw_direction: Vector2
 var initial_position: Vector2
 
-@onready var projectile_sprite = $Sprite
-
 func init_arc(direction: Vector2, desired_distance: float, desired_angle_deg: float) -> void:
 	initial_position = position;
 	throw_direction = direction.normalized()
