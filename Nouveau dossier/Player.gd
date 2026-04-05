@@ -2,8 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 @export var MAX_SPEED = 10170
-@export var GRAVITY = 2750.5
-@export var JUMP_POWER = 4000
+@export var GRAVITY = 2550.5
+@export var JUMP_POWER = 5000
 
 enum { MOVE, JUMP, DEAD }
 @onready var fade = $CanvasLayer/ColorRect
@@ -62,6 +62,8 @@ func macron_explosion():
 	fade_to_black()
 	
 func jump_state(delta):
+	if jumping && Input.is_action_just_released("Jump"):
+		jumping = false
 	# horizontal movement in the air
 	var input_x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	if input_x != 0:

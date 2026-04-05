@@ -1,0 +1,51 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://bt01hgv22m2by" path="res://Scenes/straight_time_projectile.gd" id="1_straight"]
+[ext_resource type="Texture2D" uid="uid://2lthvb5tb761" path="res://Images/bullet.png" id="2_pllv5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_straight"]
+radius = 15.34
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa1jy"]
+atlas = ExtResource("2_pllv5")
+region = Rect2(0, 0, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8566"]
+atlas = ExtResource("2_pllv5")
+region = Rect2(9, 0, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vces"]
+atlas = ExtResource("2_pllv5")
+region = Rect2(18, 0, 9, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_straight"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aa1jy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8566")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vces")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="StraightBullet" type="Area2D"]
+scale = Vector2(1.085, 1.085)
+gravity = 9.8
+script = ExtResource("1_straight")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_straight")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3.18, 3.18)
+sprite_frames = SubResource("SpriteFrames_straight")
+autoplay = "default"

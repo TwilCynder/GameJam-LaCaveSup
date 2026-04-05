@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dh00ukoubpenj"]
+
+[node name="Node2D" type="Node2D" unique_id=338111719]
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=262625302]
+offset_left = -53.999996
+offset_top = -70.99999
+offset_right = -13.999996
+offset_bottom = -30.999992
+scale = Vector2(31.129457, 22.104315)
