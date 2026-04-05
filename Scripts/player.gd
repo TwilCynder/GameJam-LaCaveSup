@@ -3,9 +3,11 @@ extends CharacterBody2D
 var time = TimeController;
 const JUMP_VELOCITY = -400.0
 
+var init_pos_x: float;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(time);
+	init_pos_x = position.x;
 	pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:
@@ -26,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide();
 	
 	time.current_scale = velocity.normalized().x;
-	time.player_x = position.x;
+	time.player_x = position.x - init_pos_x;
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

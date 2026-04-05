@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cja5yk0fhoq08"]
+
+[ext_resource type="Script" uid="uid://d31lcaud1d07r" path="res://Scripts/arc_time_projectile.gd" id="1_pllv5"]
+[ext_resource type="Texture2D" uid="uid://xl7hqpc7a6i7" path="res://Images/enemy.png" id="2_rp88q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_girm1"]
+size = Vector2(103.5, 72.502754)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inlpx"]
+atlas = ExtResource("2_rp88q")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rp88q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inlpx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bullet" type="Area2D" unique_id=2041184161]
+gravity = 9.8
+script = ExtResource("1_pllv5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=6401083]
+position = Vector2(1.1175871e-08, 1.0000001)
+scale = Vector2(1, 0.40000007)
+skew = 0.008726597
+shape = SubResource("RectangleShape2D_girm1")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=7158016]
+scale = Vector2(1, 0.3)
+skew = 0.008726597
+sprite_frames = SubResource("SpriteFrames_rp88q")
