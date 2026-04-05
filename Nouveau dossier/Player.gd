@@ -3,7 +3,7 @@ class_name Player
 
 @export var MAX_SPEED = 10170
 @export var GRAVITY = 2750.5
-@export var JUMP_POWER = 5100
+@export var JUMP_POWER = 4000
 
 enum { MOVE, JUMP, DEAD }
 @onready var fade = $CanvasLayer/ColorRect
@@ -14,7 +14,14 @@ var last_direction = 1
 var state = MOVE
 var jumping = false
 
+var init_pos_x: float;
+
+func _ready() -> void:
+	init_pos_x = position.x;
+	LevelController.player = self;
+
 func _physics_process(delta):
+
 	velocity.y += GRAVITY * delta
 	if state == DEAD :
 		return
@@ -35,11 +42,16 @@ func _physics_process(delta):
 			jump_state(delta)
 
 	move_and_slide()
+	TimeController.player_x = (position.x - init_pos_x) / 200;
+	TimeController.current_scale = velocity.normalized().x;
+
+func end_game_over():
+	LevelController.reset_level();
 
 func fade_to_black():
 	var tween = create_tween()
 	tween.tween_property(fade, "color:a", 1.0, 1.5)
-	#tween.tween_callback(func())
+	tween.tween_callback(end_game_over)
 	
 func macron_explosion():
 	state = DEAD
@@ -51,7 +63,7 @@ func macron_explosion():
 	
 func jump_state(delta):
 	# horizontal movement in the air
-	var input_x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	var input_x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	if input_x != 0:
 		last_direction = input_x
 		velocity.x = input_x * MAX_SPEED * delta
@@ -67,7 +79,7 @@ func jump_state(delta):
 		sprite.play("idle")
 
 func move_state(delta):
-	var input_x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	var input_x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 
 	if input_x != 0:
 		last_direction = input_x

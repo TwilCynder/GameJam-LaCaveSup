@@ -292,6 +292,9 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=2093913568]
 script = ExtResource("2")
+MAX_SPEED = null
+GRAVITY = null
+JUMP_POWER = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1872593100]
 position = Vector2(0.236237, -1.5749)
@@ -310,7 +313,9 @@ position_smoothing_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1537857933]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_nxjht")
-animation = &"idle"
+animation = &"death"
+frame = 16
+frame_progress = 1.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=911716140]
 

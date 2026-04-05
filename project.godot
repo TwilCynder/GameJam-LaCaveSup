@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Prototype Game Jam"
-run/main_scene="uid://do2ou0wkmvw4u"
+run/main_scene="uid://0b84sahjl38u"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

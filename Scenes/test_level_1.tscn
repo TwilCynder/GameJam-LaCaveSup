@@ -1,7 +1,7 @@
-[gd_scene format=4 uid="uid://n5m7i8lqb3vs"]
+[gd_scene format=4 uid="uid://0b84sahjl38u"]
 
 [ext_resource type="Texture2D" uid="uid://dori8gg37q475" path="res://Images/parallax-00.png" id="1_pu8o7"]
-[ext_resource type="Script" uid="uid://c7voqcqepw2wp" path="res://Scripts/cloud_layer.gd" id="2_lv8wu"]
+[ext_resource type="Script" path="res://Scripts/cloud_layer.gd" id="2_lv8wu"]
 [ext_resource type="Texture2D" uid="uid://obg0138r6anx" path="res://Images/parallax-01.png" id="2_ok5u4"]
 [ext_resource type="Texture2D" uid="uid://birvixiot4u7r" path="res://Images/parallax-02.png" id="3_8wtdv"]
 [ext_resource type="Texture2D" uid="uid://bo43h87a45cra" path="res://Images/parallax-03.png" id="4_xrrax"]
@@ -629,7 +629,7 @@ tile_map_data = PackedByteArray("AAAeABMAAAAAAAAAAAAeABQAAAAAAAEAAAAeABUAAAAAAAI
 tile_set = SubResource("TileSet_xrrax")
 
 [node name="Player" parent="." unique_id=1163191699 instance=ExtResource("6_8wtdv")]
-position = Vector2(5, -8)
+position = Vector2(-136, -9)
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="." unique_id=1664835236]
 layer = 1

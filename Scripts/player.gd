@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Player
+class_name Player_
 
 @export var SPEED = 400;
 var time = TimeController;

@@ -57,7 +57,3 @@ sprite_frames = SubResource("SpriteFrames_5ukr8")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.02702756
-
-[node name="Bullet" parent="." unique_id=2041184161 instance=ExtResource("3_ujimv")]
-texture_filter = 1
-position = Vector2(-49.999996, 18.999998)

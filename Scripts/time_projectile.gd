@@ -1,4 +1,4 @@
-extends Area2D
+extends Projectile
 class_name TimeBasedProjectile
 
 class State:
@@ -7,25 +7,20 @@ class State:
 	var frame: int;
 	var playerPosition: float;
 	
-	func init(playerPosition_ : float, position_: Vector2, animation_: String, frame_: int):
+	func init(playerPosition_ : float, position_: Vector2):
 		self.playerPosition = playerPosition_;
 		self.position = position_;
-		self.animation = animation_;
-		self.frame = frame_;
 
 @export var spawn_time: float = 0;
 var destruction_time: float = 0;
 
-@onready var sprite: AnimatedSprite2D = $Sprite;
-var spriteFPS: float;
-var spriteFrames: int;
 var stateHistory: Array[State] = [];
 var maxPlayerX = 0;
 var current_index = 0;
 		
 func recordState(playerPosition: float):
 	var state = State.new();
-	state.init(playerPosition, self.position, sprite.animation, sprite.frame);
+	state.init(playerPosition, self.position);
 	
 	stateHistory.push_back(state);
 	current_index = stateHistory.size() - 1;
@@ -37,7 +32,6 @@ func _physics_process(delta: float) -> void:
 	delta = TimeController.delta(delta);
 
 	var time = TimeController.player_x;
-	#print(time, " - ", spawn_time)
 	if (time <= spawn_time):
 		hide();
 		return;
@@ -47,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	time = time - spawn_time;
 	
 	if (time > maxPlayerX): #record
-		#print("RECORD")
+		print("RECORD")
 		var currentState = stateHistory[current_index];
 		var actual_fucking_delta = TimeController.player_x - currentState.playerPosition;
 		
@@ -59,7 +53,7 @@ func _physics_process(delta: float) -> void:
 		var index = current_index;
 		var state = stateHistory[current_index];
 		if (delta < 0):
-			#print("BACKWARD")
+			print("BACKWARD")
 			while (true):
 				var playerX = state.playerPosition;
 				if (playerX <= time): #found matching playerX
@@ -71,7 +65,7 @@ func _physics_process(delta: float) -> void:
 					pass #EMERGENCY
 				state = stateHistory[index];
 		elif (delta > 0): #we're going forward on already calculated path
-			#print("FORWARD")
+			print("FORWARD")
 			while (true):
 				var playerX = state.playerPosition;
 				if (playerX >= time): #found matching playerX
@@ -85,9 +79,6 @@ func _physics_process(delta: float) -> void:
 		
 		current_index = index;
 		position = state.position;
-		
-	print(time, " - ", spriteFPS," - ", spriteFrames, " - ",floor(time / spriteFPS))
-	sprite.frame = (floor(time * spriteFPS) as int) % spriteFrames;
 	
 func on_body_entered():
 	pass
@@ -96,7 +87,7 @@ func _on_body_entered(body):
 	if on_body_entered():
 		return
 	if body is Player:
-		LevelController.reset_level()
+		body.macron_explosion()
 	
 	
 # Called when the node enters the scene tree for the first time.
@@ -106,10 +97,7 @@ func _ready() -> void:
 	recordState(0);
 	monitoring = true
 	body_entered.connect(self._on_body_entered)
-	
-	spriteFPS = sprite.sprite_frames.get_animation_speed("default");
-	spriteFrames = sprite.sprite_frames.get_frame_count("default");
-	sprite.stop();
+
 	
 	pass # Replace with function body.
 
