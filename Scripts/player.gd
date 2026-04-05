@@ -1,4 +1,6 @@
 extends CharacterBody2D
+class_name Player
+
 @export var SPEED = 400;
 var time = TimeController;
 const JUMP_VELOCITY = -400.0
@@ -8,6 +10,7 @@ var init_pos_x: float;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	init_pos_x = position.x;
+	LevelController.player = self;
 	pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:

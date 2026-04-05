@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dcttfqi0o6h2u"]
 
 [ext_resource type="PackedScene" uid="uid://dndju30lj5nt7" path="res://Scenes/Player.tscn" id="4_8j60k"]
-[ext_resource type="Script" path="res://Scripts/gun_test.gd" id="5_5ukr8"]
+[ext_resource type="Script" uid="uid://b8hgqt64g3bix" path="res://Scripts/gun_test.gd" id="5_5ukr8"]
 [ext_resource type="Texture2D" uid="uid://x827bc1tq8ui" path="res://Images/Terrain (16x16).png" id="5_fo5ed"]
 [ext_resource type="Texture2D" uid="uid://b1eia00e0lacb" path="res://Images/Game Boy Advance - The Legend of Zelda_ The Minish Cap - Enemies - Octorok.png" id="6_5ukr8"]
 

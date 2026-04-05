@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 	time = time - spawn_time;
 	
 	if (time > maxPlayerX): #record
-		print("RECORD")
+		#print("RECORD")
 		var currentState = stateHistory[current_index];
 		var actual_fucking_delta = TimeController.player_x - currentState.playerPosition;
 		
@@ -57,7 +57,7 @@ func _physics_process(delta: float) -> void:
 		var index = current_index;
 		var state = stateHistory[current_index];
 		if (delta < 0):
-			print("BACKWARD")
+			#print("BACKWARD")
 			while (true):
 				var playerX = state.playerPosition;
 				if (playerX <= time): #found matching playerX
@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 					pass #EMERGENCY
 				state = stateHistory[index];
 		elif (delta > 0): #we're going forward on already calculated path
-			print("FORWARD")
+			#print("FORWARD")
 			while (true):
 				var playerX = state.playerPosition;
 				if (playerX >= time): #found matching playerX
@@ -83,12 +83,24 @@ func _physics_process(delta: float) -> void:
 		
 		current_index = index;
 		position = state.position;
+		
+func on_body_entered():
+	pass
+	
+func _on_body_entered(body):
+	if on_body_entered():
+		return
+	if body is Player:
+		LevelController.reset_level()
+	
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if (spawn_time > 0):
 		hide();
 	recordState(0);
+	monitoring = true
+	body_entered.connect(self._on_body_entered)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

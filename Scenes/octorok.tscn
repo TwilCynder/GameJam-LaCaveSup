@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b8hgqt64g3bix" path="res://Scripts/gun_test.gd" id="1_vjguh"]
 [ext_resource type="Texture2D" uid="uid://b1eia00e0lacb" path="res://Images/Game Boy Advance - The Legend of Zelda_ The Minish Cap - Enemies - Octorok.png" id="2_ujimv"]
-[ext_resource type="PackedScene" uid="uid://cja5yk0fhoq08" path="res://Scenes/TestArcProjectile.tscn" id="3_ujimv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o06y3"]
 size = Vector2(12.489964, 10.241868)
@@ -57,6 +56,3 @@ sprite_frames = SubResource("SpriteFrames_5ukr8")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.02702756
-
-[node name="Bullet" parent="." unique_id=2041184161 instance=ExtResource("3_ujimv")]
-position = Vector2(-49.999996, 18.999998)

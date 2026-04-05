@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 TimeController="*uid://b4hn5v7ven31c"
+LevelController="*uid://b575f1fy3gau3"
 
 [editor]
 

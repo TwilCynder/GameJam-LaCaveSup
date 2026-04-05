@@ -29,7 +29,7 @@ func calc_position(time: float):
 		initial_position.y - z_axis  # tout dans global_position, plus de position.y séparé
 	)
 	
-	print(position)
+	#print(position);
 
 func _process(delta: float) -> void:
 	pass
