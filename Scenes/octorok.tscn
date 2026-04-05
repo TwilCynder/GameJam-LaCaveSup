@@ -51,6 +51,7 @@ position = Vector2(-51, 19)
 [node name="Timer" type="Timer" parent="." unique_id=2036260195]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1406784373]
+texture_filter = 1
 position = Vector2(-13, 15.999996)
 scale = Vector2(3.452381, 3.4523811)
 sprite_frames = SubResource("SpriteFrames_5ukr8")
@@ -59,4 +60,5 @@ autoplay = "idle"
 frame_progress = 0.02702756
 
 [node name="Bullet" parent="." unique_id=2041184161 instance=ExtResource("3_ujimv")]
+texture_filter = 1
 position = Vector2(-49.999996, 18.999998)
