@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://d0n255oo3jwjw"]
+
+[ext_resource type="Script" uid="uid://cce0xlcybs3ex" path="res://Scenes/octorok_2.gd" id="1_4vm4m"]
+[ext_resource type="Texture2D" uid="uid://b1eia00e0lacb" path="res://Images/Game Boy Advance - The Legend of Zelda_ The Minish Cap - Enemies - Octorok.png" id="2_wwi70"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o06y3"]
+size = Vector2(12.489964, 10.241868)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o06y3"]
+atlas = ExtResource("2_wwi70")
+region = Rect2(0, 0, 21, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7acu"]
+atlas = ExtResource("2_wwi70")
+region = Rect2(30, 0, 21, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v1tr"]
+atlas = ExtResource("2_wwi70")
+region = Rect2(60, 0, 21, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ukr8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o06y3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7acu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5v1tr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Octorok" type="CharacterBody2D" unique_id=1051078121]
+position = Vector2(598, 100)
+script = ExtResource("1_4vm4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1937779165]
+position = Vector2(-13.4999695, 13.5)
+scale = Vector2(5.6845655, 6.9323273)
+shape = SubResource("RectangleShape2D_o06y3")
+
+[node name="Anchor" type="Node2D" parent="." unique_id=1145615880]
+position = Vector2(-51, 19)
+
+[node name="Timer" type="Timer" parent="." unique_id=2036260195]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1406784373]
+texture_filter = 1
+position = Vector2(-13, 15.999996)
+scale = Vector2(3.452381, 3.4523811)
+sprite_frames = SubResource("SpriteFrames_5ukr8")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.02702756
