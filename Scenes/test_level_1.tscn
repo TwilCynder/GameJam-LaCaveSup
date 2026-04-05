@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bnjp546dppim1" path="res://Images/groundTilemap_64px.png" id="5_ok5u4"]
 [ext_resource type="PackedScene" uid="uid://cscbhfhf0kyoh" path="res://Nouveau dossier/Player.tscn" id="6_8wtdv"]
 [ext_resource type="Texture2D" uid="uid://cuutuejn55bta" path="res://Images/parallax-04.png" id="8_6cxfm"]
+[ext_resource type="PackedScene" uid="uid://cgnflh5qy1c3a" path="res://Scenes/octorok.tscn" id="9_6cxfm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8wtdv"]
 texture = ExtResource("5_ok5u4")
@@ -641,3 +642,7 @@ motion_mirroring = Vector2(1440, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer" unique_id=602249232]
 position = Vector2(407, -37)
 texture = ExtResource("8_6cxfm")
+
+[node name="Octorok" parent="." unique_id=1051078121 instance=ExtResource("9_6cxfm")]
+position = Vector2(73, -4)
+scale = Vector2(0.335, 0.335)
