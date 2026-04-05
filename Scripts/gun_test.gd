@@ -1,22 +1,26 @@
 extends CharacterBody2D
 
-var bullet_path = preload("res://Scenes/bullet_test2.tscn")
+var BULLET_INTERVAL = 200;
+var SIZE = 2000;
 
-@export var fire_rate: float = 0.4
-@export var desired_distance: float = 150.0
-@export var desired_angle_deg: float = 60.0
-@export var throw_direction: Vector2 = Vector2(-1, 0)  # tire à gauche par défaut
+@onready var anchorNode = $Anchor;
+var bulletScene = preload("res://Scenes/TestArcProjectile.tscn")
 
-@onready var timer = $Timer
-
-
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	timer.wait_time = fire_rate
-	timer.timeout.connect(_on_fire)
-	timer.start()
+	var bullet: ArcBullet = $Bullet;
+	bullet.init_arc(Vector2(-1, 0), 150.0, 60.0);
+	
+	for t in range(0, SIZE, BULLET_INTERVAL):
+		var inst: ArcBullet = bulletScene.instantiate()
+		inst.spawn_time = t;
+		add_child(inst);
+		inst.position = anchorNode.position;
+		inst.init_arc(Vector2(-1, 0), 150.0, 60.0);
+		print(inst.position);
+		
+		
+	pass # Replace with function body.
 
-
-func _on_fire() -> void:
-	var bullet = bullet_path.instantiate()
-	get_tree().root.add_child(bullet)
-	bullet.launch($Node2D.global_position, throw_direction, desired_distance, desired_angle_deg)
+func _process(delta: float) -> void:
+	pass
